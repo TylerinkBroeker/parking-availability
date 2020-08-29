@@ -1,7 +1,7 @@
 const env = {
     database: 'parking',
     username: 'root',
-    password: 'P@sswor',
+    password: 'P@ssword',
     host: 'localhost',
     dialect: 'mysql',
     pool: {
