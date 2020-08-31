@@ -1,4 +1,4 @@
-
+import React from 'react';
 /**************COMPONENTS******************/
 //NavBar at top (No current function)
 //Welcome Field

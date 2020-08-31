@@ -1,4 +1,4 @@
-
+import React from 'react';
 
 //API call to get spot info
 
