@@ -1,6 +1,6 @@
 import React from 'react';
-import UserType from '../components/LoginBtn';
-//import { UserField } from '../components/LoginField';
+//import UserType from '../components/LoginBtn';
+import UserField from '../components/LoginField';
 
 
 /**************COMPONENTS******************/
