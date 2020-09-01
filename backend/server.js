@@ -11,7 +11,7 @@ var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 // adding and updating to our database
-var db = require("./config/db");
+var db = require("./models");
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
