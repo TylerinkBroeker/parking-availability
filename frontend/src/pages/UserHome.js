@@ -1,6 +1,7 @@
 import React from 'react';
 import SpotController from '../components/SpotController';
 import GarageList from '../components/GarageList';
+import LogOut from '../components/LogOut/LogOut.js';
 
 
 /**************COMPONENTS******************/
@@ -16,6 +17,7 @@ function UserHome() {
     return (
         <div>
             <h1>Welcome User's Name!</h1>
+            <LogOut />
             <div className="container garage-list-container" style={{float: "left"}}>
                 <h2>Your Garages</h2>
                 <GarageList />

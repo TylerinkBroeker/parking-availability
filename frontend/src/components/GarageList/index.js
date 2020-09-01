@@ -16,6 +16,7 @@ export function List({ children }) {
 export function ListItem({ children }) {
   return <li className="list-group-item">{children}</li>;
 }
+-Each list item will ideally call/refresh the component it is referenceing
 */
 
 function GarageList() {

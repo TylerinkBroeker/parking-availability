@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import { Link } from "react-router-dom";
 
 
 /***************Components ********************/
@@ -20,6 +21,9 @@ export function UserField() {
                 <input type="password" placeholder="Enter Password" name="psw" required />
 
                 <button type="submit" className="registerbtn">Login</button>
+                <div className="container signin">
+                    <p>Don't have an account? <Link to={"/signup"}>Sign up</Link>!</p>
+                </div>
             </div>
         </form>
     )
