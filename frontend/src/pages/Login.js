@@ -1,29 +1,26 @@
 import React from 'react';
-//import UserType from '../components/LoginBtn';
+import { UserBtn, ManagerBtn, SignUpBtn } from '../components/LoginBtn';
 import UserField from '../components/LoginField';
-
-
-/**************COMPONENTS******************/
-//Header for login
-//Main field for LoginBtn AND LoginField
-
-
-//if user is pressed, it loads up user login field function
-//if manager is pressed, it loads up manager login field function
-//if signup is pressed it transfers to signup page
-
+import { Link } from "react-router-dom";
+//import SignUp from './SignUp';
 
 
 function Login() {
-
-
-
     return (
-        <UserField />
+        <div>
+            <UserField />
+
+            <Link to={"/managerhome"}>
+                <ManagerBtn />
+            </Link>
+            <Link to={"/userhome"}>
+                <UserBtn />
+            </Link>
+            <Link to={"/signup"}>
+                <SignUpBtn />
+            </Link>
+        </div>
     )
-
-
 }
-
 
 export default Login

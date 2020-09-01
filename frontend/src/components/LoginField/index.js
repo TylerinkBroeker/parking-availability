@@ -4,22 +4,22 @@ import './style.css';
 
 /***************Components ********************/
 //Login Fields for User username and password
+//Eventually all of this will be gone and all of these components will be from components/Form
+
 export function UserField() {
     return (
         <form action="/action_page.php" method="post">
             <div className="container">
+                <h1>Login</h1>
+                <hr />
+
                 <label for="uname"><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="uname" required />
 
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required />
 
-                <button type="submit">Login</button>
-            </div>
-
-            <div className="container">
-                <button type="button" className="cancelbtn">Cancel</button>
-                <span className="psw">Forgot password?</span>
+                <button type="submit" className="registerbtn">Login</button>
             </div>
         </form>
     )
