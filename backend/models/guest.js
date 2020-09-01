@@ -1,5 +1,7 @@
+var bcrypt = require("bcryptjs");
+
 module.exports = (sequelize, Sequelize) => {
-    const Guests = sequelize.define('guests', {
+    const Guest = sequelize.define('Guest', {
       firstname: {
         type: Sequelize.STRING
       },
@@ -24,15 +26,15 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER
       }
     });
-    Guests.associate = function(models) {
+    Guest.associate = function(models) {
         // We're saying that a Guest should belong to a User 
         // A Guest can't be created without a User due to the foreign key constraint
-        Guests.belongsTo(models.Users, {
+        Guest.belongsTo(models.User, {
           foreignKey: {
-            allowNull: true
+            allowNull: false
           }
         });
     };
-      return Guests;
+      return Guest;
 };
     
