@@ -20,11 +20,11 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
  
 //Models/tables
-db.users = require('../model/users.model.js')(sequelize, Sequelize);
-db.guests = require('../model/guests.model.js')(sequelize, Sequelize);
-db.managers = require('../model/managers.model.js')(sequelize, Sequelize);
-db.parkinglots = require('../model/parkinglots.model.js')(sequelize, Sequelize);
-db.parkingspaces = require('../model/parkingspaces.model.js')(sequelize, Sequelize);
+db.users = require('../models/users.js')(sequelize, Sequelize);
+db.guests = require('../models/guests.js')(sequelize, Sequelize);
+db.managers = require('../models/managers.js')(sequelize, Sequelize);
+db.parkinglots = require('../models/parkinglots.js')(sequelize, Sequelize);
+db.parkingspaces = require('../models/parkingspaces.js')(sequelize, Sequelize);
  
  
 module.exports = db;
