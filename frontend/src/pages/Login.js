@@ -16,9 +16,7 @@ function Login() {
             <Link to={"/userhome"}>
                 <UserBtn />
             </Link>
-            <Link to={"/signup"}>
-                <SignUpBtn />
-            </Link>
+            
         </div>
     )
 }
