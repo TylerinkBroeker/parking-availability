@@ -7,6 +7,7 @@ CREATE TABLE users (
     id int NOT NULL AUTO_INCREMENT,
     firstname varchar(100) NOT NULL,
     lastname varchar(100) NOT NULL,
+
     password varchar(100) NOT NULL,
     PRIMARY KEY (id)
 );
@@ -26,6 +27,7 @@ CREATE TABLE managers (
     id int NOT NULL AUTO_INCREMENT,
     firstname varchar(100) NOT NULL,
     lastname varchar(100) NOT NULL,
+    
     password varchar(100) NOT NULL,
     PRIMARY KEY (id)
 );

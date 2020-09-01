@@ -37,7 +37,7 @@ module.exports = (sequelize, Sequelize) => {
 //       });
     
 //       Users.associate = function(models) {
-//         // Associating User with Subscription
+//         // Associating User with Guests
 //         // When a User is deleted, also delete any associated Guests
 //         Users.hasMany(models.Guests, {
 //           onDelete: "cascade"
