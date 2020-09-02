@@ -1,5 +1,5 @@
 import React from 'react';
-//import GarageGraphic from '../components/GarageGraphic';
+import GarageGraphic from '../components/GarageGraphic';
 import GarageList from '../components/GarageList';
 import LogOut from '../components/LogOut/LogOut.js';
 /**************COMPONENTS******************/
@@ -21,7 +21,7 @@ function ManagerHome() {
             </div>
             <div className="container spot-controller-container" style={{float: "right"}}>
                 <h2>Current Selected Garage Graphic:</h2>
-                {/* Graphic for selected parking garage */}
+                <GarageGraphic />
             </div>
         </div>
     )
