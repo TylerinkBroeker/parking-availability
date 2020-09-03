@@ -1,11 +1,10 @@
 import React from 'react';
-//import React, { btn } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 
 export function UserBtn() {
-
     return (
-        <button className="btn btn-primary">User</button>
+        <Button variant="primary">User</Button>
         //either set up sign in form to ping user table || no buttons, only one login form
     )
 }
