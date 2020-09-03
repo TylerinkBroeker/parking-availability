@@ -3,10 +3,10 @@ import React from 'react';
 import GarageList from '../components/GarageList';
 import LogOut from '../components/LogOut/LogOut.js';
 /**************COMPONENTS******************/
-//NavBar at top (No current function)
-//Welcome Field
+
 //GarageList on left sidebar type thing
 //GarageGraphic on right as main field type thing
+//Top of Left 
 
 
 function ManagerHome() {

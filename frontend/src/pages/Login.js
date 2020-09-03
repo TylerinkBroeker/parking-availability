@@ -2,7 +2,6 @@ import React from 'react';
 import { UserBtn, ManagerBtn, SignUpBtn } from '../components/LoginBtn';
 import UserField from '../components/LoginField';
 import { Link } from "react-router-dom";
-//import SignUp from './SignUp';
 
 
 function Login() {
