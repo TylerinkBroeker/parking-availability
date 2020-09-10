@@ -4,6 +4,7 @@ import GarageList from '../components/GarageList';
 import LogOut from '../components/LogOut/LogOut.js';
 
 
+
 /**************COMPONENTS******************/
 //NavBar at top (No current function)
 //Welcome Field
@@ -12,11 +13,11 @@ import LogOut from '../components/LogOut/LogOut.js';
 
 
 
-function UserHome() {
+function UserHome(props) {
 
     return (
         <div>
-            <h1>Welcome User's Name!</h1>
+            <h1>Welcome {props.UserName}</h1>
             <LogOut />
             <div className="container garage-list-container" style={{float: "left"}}>
                 <h2>Your Garages</h2>

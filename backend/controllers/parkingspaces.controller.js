@@ -1,12 +1,13 @@
 const db = require('../models');
-  const Users = db.parkingspace;
+const parkingspaces = require('../routes/parkingspaces');
+  const Parkingspaces = db.Parkingspace;
   console.log(db);
  
 // Post a User
 exports.create = (req, res) => {  
   // Save User to MySQL database
-  parkingspace.create({  
-    parkingspace: req.body.parkingspace
+  Parkingspaces.create({  
+    Parkingspaces: req.body.parkingspace
   }).then(parkingspace => {
     // Send created user to client
     res.send(parkingspace);
@@ -15,11 +16,24 @@ exports.create = (req, res) => {
   })
 };
 
+exports.findByuserId = (req, res) => {  
+  console.log("find by user Id")
+  Parkingspaces.findAll({
+    where: {
+      UserId: req.params.userId
+    }
+  }).then(parkingspaces => {
+    res.send(parkingspaces);
+  }).catch(err => {
+    res.status(500).send("Error -> " + err);
+  })
+};
+
 // Fetch all Users
 exports.findAll = (req, res) => {
-  Users.findAll().then(users => {
+  Parkingspaces.findAll().then(parkingspaces => {
     // Send all Users to Client
-    res.send(users);
+    res.send(parkingspaces);
   }).catch(err => {
     res.status(500).send("Error -> " + err);
   })
