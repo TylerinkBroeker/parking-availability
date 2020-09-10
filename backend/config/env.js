@@ -1,16 +1,16 @@
-const env = {
-    database: 'parking',
-    username: 'root',
-    password: 'P@ssword',
-    host: 'localhost',
-    dialect: 'mysql',
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-    }
-  };
+// const env = {
+//     database: 'parking',
+//     username: 'root',
+//     password: 'P@ssword',
+//     host: 'localhost',
+//     dialect: 'mysql',
+//     pool: {
+//       max: 5,
+//       min: 0,
+//       acquire: 30000,
+//       idle: 10000
+//     }
+//   };
    
-  module.exports = env;
+//   module.exports = env;
   

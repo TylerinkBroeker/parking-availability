@@ -10,10 +10,10 @@ module.exports = function(app) {
     app.get('/api/users', users.findAll);
  
     // // Retrieve a single User by Id
-    // app.get('/api/users:userId', users.findById);
+    app.get('/api/users/:userId', users.findByPk);
    
     // // Update a User with Id
-    // app.put('/api/users/:userId', users.update);
+    app.put('/api/users/:userId', users.update);
  
     // // Delete a User with Id
     // app.delete('/api/users/:userId', users.delete);

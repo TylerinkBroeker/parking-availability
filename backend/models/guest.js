@@ -22,9 +22,9 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false
       },
-      userID: {
-        type: Sequelize.INTEGER
-      }
+      // userID: {
+      //   type: Sequelize.INTEGER
+      // }
     });
     Guest.associate = function(models) {
         // We're saying that a Guest should belong to a User 
