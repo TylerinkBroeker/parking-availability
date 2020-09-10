@@ -22,9 +22,9 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false
       },
-      parkingspace: {
-        type: Sequelize.INTEGER
-      }
+      // parkingspace: {
+      //   type: Sequelize.INTEGER
+      // }
     });
     
      User.prototype.validPassword = function(password) {
@@ -43,5 +43,14 @@ module.exports = (sequelize, Sequelize) => {
            onDelete: "cascade"
          });
        };
+
+       User.associate = function(models) {
+        // Associating User with ParkingSpace
+        // When a User is deleted, also delete any associated Parkingspaces
+        User.hasMany(models.Parkingspace, {
+          onDelete: "cascade"
+        });
+      };
+
        return User;
 };

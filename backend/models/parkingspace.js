@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
     const Parkingspace = sequelize.define('Parkingspace', {
-      parkinglotID: {
-        type: Sequelize.INTEGER
+      parkingspacenumber: {
+        type: Sequelize.STRING
       }
     });
     Parkingspace.associate = function(models) {
@@ -12,6 +12,17 @@ module.exports = (sequelize, Sequelize) => {
           allowNull: false
         }
       });
-  };
+    };
+
+    Parkingspace.associate = function(models) {
+      // We're saying that a Parkingspace should belong to a User
+      // A Parkingspace can't be created without a User due to the foreign key constraint
+      Parkingspace.belongsTo(models.User, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
+    };
+
     return Parkingspace;
 };
