@@ -1,20 +1,23 @@
 
-// const parkingspaces = require('../controllers/parkingspaces.controller.js');
+const parkingspaces = require('../controllers/parkingspaces.controller.js');
 
-// module.exports = function(app) {
+module.exports = function(app) {
  
-//     // Create a new Parkingspace
-//     app.post('/api/parkingspaces/create', parkingspaces.create);
+    // Create a new Parkingspace
+    app.post('/api/parkingspaces/create', parkingspaces.create);
  
-//     // // Retrieve all Parkingspaces
-//     app.get('/api/parkingspaces', parkingspaces.findAll);
+    // // Retrieve all Parkingspaces
+    app.get('/api/parkingspaces', parkingspaces.findAll);
  
-//     // // Retrieve a single Parkingspace by Id
-//     app.get('/api/parkingspaces/:parkingspaceId', parkingspaces.findByPk);
+    // // // Retrieve a single Parkingspace by Id
+    // app.get('/api/parkingspaces/:parkingspaceId', parkingspaces.findByPk);
    
-//     // // Update a Parkingspace with Id
-//     app.put('/api/parkingspaces/:parkingspaceId', parkingspaces.update);
+    // // // Update a Parkingspace with Id
+    // app.put('/api/parkingspaces/:parkingspaceId', parkingspaces.update);
+
+    // // Retrieve all Parkingspaces by User Id
+    app.get('/api/parkingspacesbyUserId/:userId', parkingspaces.findByuserId);
  
-//     // // Delete a Parkingspace with Id
-//     // app.delete('/api/parkingspaces/:parkingspaceId', parkingspaces.delete);
-// }
+    // // Delete a Parkingspace with Id
+    // app.delete('/api/parkingspaces/:parkingspaceId', parkingspaces.delete);
+}

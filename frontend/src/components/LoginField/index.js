@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export function UserField() {
     return (
-        <form action="/action_page.php" method="post">
+        <form action="/api/users" method="post">
             <div className="container">
                 <h1>Login</h1>
                 <hr />
