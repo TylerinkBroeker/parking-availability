@@ -19,19 +19,36 @@ export function ListItem({ children }) {
 -Each list item will ideally call/refresh the component it is referenceing
 */
 
-function ParkingSpaceList() {
-    return (
-        <div className="container">
-            <ul>
-                <li>Garage 1</li>
-                <li>Garage 2</li>
-                <li>Garage 3</li>
-                <li>Garage 4</li>
-                <li>Garage 5</li>
-            </ul>
+
+
+export function List({ children }) {
+  return (
+    <div className="list-overflow-container">
+      <ul className="list-group">{children}</ul>
     </div>
-    )
-    
+  );
 }
 
-export default ParkingSpaceList
+export function ListItem({ children }) {
+  return <li className="list-group-item">{children}</li>;
+}
+
+
+
+
+// function ParkingSpaceList() {
+//     return (
+//         <div className="container">
+//             <ul>
+//                 <li>Garage 1</li>
+//                 <li>Garage 2</li>
+//                 <li>Garage 3</li>
+//                 <li>Garage 4</li>
+//                 <li>Garage 5</li>
+//             </ul>
+//     </div>
+//     )
+    
+// }
+
+// export default ParkingSpaceList
