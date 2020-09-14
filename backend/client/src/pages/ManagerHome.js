@@ -1,7 +1,7 @@
 import React from 'react';
 import GarageGraphic from '../components/GarageGraphic';
 import GarageList from '../components/GarageList';
-import LogOut from '../components/LogOut/LogOut.js';
+import { ManagerNavBar } from '../components/NavBar';
 /**************COMPONENTS******************/
 
 //GarageList on left sidebar type thing
@@ -13,8 +13,8 @@ function ManagerHome() {
 
     return (
         <div>
+            <ManagerNavBar />
             <h1>Welcome Manager's Name!</h1>
-            <LogOut />
             <div className="container garage-list-container" style={{float: "left"}}>
                 <h2>Your Garages</h2>
                 <GarageList />
