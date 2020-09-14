@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import SpotController from '../components/SpotController';
 // import GarageList from '../components/GarageList';
+import { UserNavBar } from '../components/NavBar';
 import { List, ListItem } from "../components/ParkingSpaceList";
-import LogOut from '../components/LogOut/LogOut.js';
 import API from "../utils/API";
 
 
 
 /**************COMPONENTS******************/
-//NavBar at top (No current function)
 //Welcome Field
-//GarageList on left sidebar type thing takes up half of page
-//SpotController on right as main field type thing takes up half of page
-
+//Parking Space list on left sidebar type thing takes up half of page, each spot can be clicked
+//SpotController on right as main field type thing takes up half of page clicked spot controlled here
 
 
 function UserHome(props) {
@@ -35,15 +33,15 @@ function UserHome(props) {
 
     return (
         <div>
+          <UserNavBar />
             <h1>Welcome {props.firstname} {props.lastname}</h1>
-            <LogOut />
             <div className="container space-list-container" style={{ float: "left" }}>
                 <h2>Your Spots</h2>
                 {spaces.length ? (
               <List>
                 {spaces.map(space => (
                   <ListItem key={space._id}>
-                    Parking Space
+                    Parking Space # {space.id}
                   </ListItem>
                 ))}
               </List>

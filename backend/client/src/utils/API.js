@@ -3,33 +3,33 @@ import axios from "axios";
 
 
 export default {
+
+  //GETS for USERPAGE
+  // Gets user info by user id
+  getUserById: function() {
+    return axios.get("/api/users/1");//Remember to change to be logged in user's id
+  },
   // Gets all parkingspaces with the given user id
   getParkingSpacesByUserId: function() {
     return axios.get("/api/parkingspacesbyUserId/1");
-  }
+  },
+  // Gets all parkinglots with the given user id
+  getParkingSpacesByUserId: function() {
+    return axios.get("/api/parkingspacesbyUserId/1");
+  },
+  // // Gets all parkinglots by zip code
+  // getParkingSpacesByUserId: function() {
+  //   return axios.get("/api/parkingspacesbyUserId/1");
+  // },
+  
+
+  //GETS for MANAGERPAGE
+  // Gets all parking lots with the given manager id
+  // getManager: function() {
+  //   return axios.get("/api/managers/:managerId");
+  // }
 
 };
-
-
-// export default {
-//     // Gets all books
-//     getBooks: function() {
-//       return axios.get("/api/books");
-//     },
-//     // Gets the book with the given id
-//     getBook: function(id) {
-//       return axios.get("/api/books/" + id);
-//     },
-//     // Deletes the book with the given id
-//     deleteBook: function(id) {
-//       return axios.delete("/api/books/" + id);
-//     },
-//     // Saves a book to the database
-//     saveBook: function(bookData) {
-//       return axios.post("/api/books", bookData);
-//     }
-//   };
-
 
 /*
 export default {
