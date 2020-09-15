@@ -15,7 +15,7 @@ import API from "../utils/API";
 
 function UserHome(props) {
     const [spaces, setSpaces] = useState([])
-    const [formObject, setFormObject] = useState({})
+    // const [formObject, setFormObject] = useState({})
 
     useEffect(() => {
         loadSpaces()
@@ -29,13 +29,20 @@ function UserHome(props) {
             .catch(err => console.log(err));
     };
 
+    function getUserInfo() {
+      API.getUserById()
+      .then(res => 
+        console.log(res.data.firstname))
+    }
 
+    getUserInfo();
 
     return (
         <div>
           <UserNavBar />
             <h1>Welcome {props.firstname} {props.lastname}</h1>
-            <div className="container space-list-container" style={{ float: "left" }}>
+            
+            <div className="container col-sm-6" style={{ float: "left" }}>
                 <h2>Your Spots</h2>
                 {spaces.length ? (
               <List>
@@ -49,7 +56,8 @@ function UserHome(props) {
               <h3>No Results to Display</h3>
             )}
             </div>
-            <div className="container spot-controller-container" style={{ float: "right" }}>
+            
+            <div className="container col-sm-6" style={{ float: "right" }}>
                 <h2>Your parking spot</h2>
                 <SpotController />
             </div>

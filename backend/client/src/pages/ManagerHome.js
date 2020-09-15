@@ -15,11 +15,11 @@ function ManagerHome() {
         <div>
             <ManagerNavBar />
             <h1>Welcome Manager's Name!</h1>
-            <div className="container garage-list-container" style={{float: "left"}}>
+            <div className="container col-sm-6" style={{float: "left"}}>
                 <h2>Your Garages</h2>
                 <GarageList />
             </div>
-            <div className="container spot-controller-container" style={{float: "right"}}>
+            <div className="container col-sm-6" style={{float: "right"}}>
                 <h2>Current Selected Garage Graphic:</h2>
                 <GarageGraphic />
             </div>

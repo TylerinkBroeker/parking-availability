@@ -4,7 +4,8 @@ import { Input, FormBtn } from '../components/Form';
 import { Link } from "react-router-dom";
 
 
-//THANKS TO W3 School for this wonderful setup!
+//May take manager id as an argument so that can be passed to the handleformsubmit so it can 
+//create the garage with the manager's id
 function GarageForm() {
 
     const [formObject, setFormObject] = useState({})
@@ -20,8 +21,9 @@ function GarageForm() {
         if (formObject.street && formObject.zip) {
             let garage = {
                 street: formObject.street,
-                zip: formObject.zip,
-                spaces: 6
+                postalcode: formObject.zip,
+                totalspaces: 6
+                //ManagerId: whatever is passed in
             }
             console.log(garage)
             alert("Garage has been saved!")
@@ -43,7 +45,8 @@ function GarageForm() {
       };
 
     return (
-        <form>
+        <form style={{padding: "50px"}}>
+            <h1 style={{textAlign: "center"}}>Create a New Garage!</h1>
             <div className="container">
             <label for="street"><b>Street Name</b></label>
               <Input
@@ -70,6 +73,9 @@ function GarageForm() {
               >
                 Submit Book
               </FormBtn>
+              <Link to={"/managerhome"}>
+              <button className="btn btn-danger">Cancel</button>
+              </Link>
               </div>
             </form>
     )
