@@ -28,6 +28,12 @@ export default {
   // getManager: function() {
   //   return axios.get("/api/managers/:managerId");
   // }
+  
+  //POST
+  // Saves new garage to garage table
+  // saveGarage: function(garageData) {
+  //   return axios.post("/api/parkinglots", garageData);
+  // }
 
 };
 

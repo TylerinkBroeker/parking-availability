@@ -3,27 +3,33 @@ import './style.css';
 import { Link } from "react-router-dom";
 
 
-// export function Input(props) {
-//   return (
-//     <div>
-//       <label for="uname"><b>Username</b></label>
-//       <input type="text" placeholder={props} name="uname" required />
-//     </div>
-//   )
-// }
+export function Input(props) {
+  return (
+    <div className="form-group">
+      <input className="form-control" {...props} />
+    </div>
+  );
+}
 
-// export function FormBtn(props) {
-//   return (
-//     <button {...props} className="btn btn-success">
-//       {props.children}
-//     </button>
-//   );
-// }
+export function TextArea(props) {
+  return (
+    <div className="form-group">
+      <textarea className="form-control" rows="20" {...props} />
+    </div>
+  );
+}
 
+export function FormBtn(props) {
+  return (
+    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+      {props.children}
+    </button>
+  );
+}
 
 //THANKS TO W3 School for this wonderful setup!
 
-function SignUpForm() {
+export function SignUpForm() {
     return (
       <form action="action_page.php">
         <div className="container">
@@ -53,4 +59,3 @@ function SignUpForm() {
     )
 }
 
-export default SignUpForm;

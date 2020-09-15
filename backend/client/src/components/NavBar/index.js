@@ -13,7 +13,9 @@ export function ManagerNavBar() {
   return (
     <ul className="nav nav-tabs">
       <li className="nav-item">
-        <Link to="/managerhome" className={location.pathname === "/managerhome" ? "nav-link active" : "nav-link"}>
+        <Link to="/managerhome"
+        className={location.pathname === "/managerhome" ? "nav-link active" : "nav-link"}
+        >
           Home
         </Link>
       </li>
