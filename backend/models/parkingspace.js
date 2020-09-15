@@ -17,15 +17,15 @@ module.exports = (sequelize, Sequelize) => {
       });
     };
 
-    Parkingspace.associate = function(models) {
-      // We're saying that a Parkingspace should belong to a User
-      // A Parkingspace can't be created without a User due to the foreign key constraint
-      Parkingspace.belongsTo(models.User, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
-    };
+    // Parkingspace.associate = function(models) {
+    //   // We're saying that a Parkingspace should belong to a User
+    //   // A Parkingspace can't be created without a User due to the foreign key constraint
+    //   Parkingspace.belongsTo(models.User, {
+    //     foreignKey: {
+    //       allowNull: false
+    //     }
+    //   });
+    // };
 
     return Parkingspace;
 };

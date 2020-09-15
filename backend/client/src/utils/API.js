@@ -31,11 +31,18 @@ export default {
   // getManager: function() {
   //   return axios.get("/api/managers/:managerId");
   // }
+  // Gets all parking lots with the given manager id
+  getLotByManagerId: function() {
+    return axios.get("/api/parkinglotsbymanagerId/1");
+  },
   
   //POST
   // Saves new garage to garage table
   saveGarage: function(garageData) {
     return axios.post("/api/parkinglots/create", garageData);
+  },
+  createParkingSpace: function(spaceData) {
+    return axios.post("/api/parkingspaces/create", spaceData)
   }
 
 };
