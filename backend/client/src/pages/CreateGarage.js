@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Input, FormBtn } from '../components/Form';
-//import API from '../utils/API';
+import API from '../utils/API';
+import { ManagerNavBar } from '../components/NavBar';
 import { Link } from "react-router-dom";
 
 
-//May take manager id as an argument so that can be passed to the handleformsubmit so it can 
-//create the garage with the manager's id
 function GarageForm() {
 
     const [formObject, setFormObject] = useState({})
@@ -15,69 +14,74 @@ function GarageForm() {
         setFormObject({...formObject, [name]: value})
       };
 
+    //Either generate spaces here or add a button click to do it after garage is made, or maybe from managerHome screen.
+    // function createGarageSpots(lotId) {
+    //   for(let i=0;i<6;i++) {
+    //     API.createParkingSpace({
+    //       parkingspacenumber: i + 1,
+    //       isAvailable: true,
+    //       ParkinglotId: lotId,
+    //       UserId: ""
+    //     })
+    //   }
+    // }
+
     function handleFormSubmit(event) {
         event.preventDefault();
-        
-        if (formObject.street && formObject.zip) {
-            let garage = {
-                street: formObject.street,
-                postalcode: formObject.zip,
-                totalspaces: 6
-                //ManagerId: whatever is passed in
-            }
-            console.log(garage)
-            alert("Garage has been saved!")
-            // .then(
-            //     <Link to={"/managerhome"} />
-            // )
-            // .catch(err => console.log(err));
+        if (formObject.street && formObject.postalcode && formObject.ManagerId) {
+          API.saveGarage({
+            street: formObject.street,
+            postalcode: formObject.postalcode,
+            totalspaces: 6,
+            ManagerId: formObject.ManagerId
+          })
+          /*.then(API.getLastLotId() -->get just id number of last lot added
+              .then(createGarageSpots(lotId)))*/
+            // .then(createGarageSpots(3))
+            .then(alert("New Garage Saved"))
+            .catch(err => console.log(err));
         }
-
-        // if (formObject.title && formObject.author) {
-        //   API.saveGarage({
-        //     street: formObject.street,
-        //     zip: formObject.zip,
-        //     spaces: formObject.spaces
-        //   })
-        //     .then(res => loadBooks())
-        //     .catch(err => console.log(err));
-        // }
       };
 
     return (
-        <form style={{padding: "50px"}}>
-            <h1 style={{textAlign: "center"}}>Create a New Garage!</h1>
-            <div className="container">
+      <div>
+        <ManagerNavBar />
+        <form>
+            <div className="container" style={{padding: "50px"}}>
             <label for="street"><b>Street Name</b></label>
               <Input
                 onChange={handleInputChange}
                 name="street"
                 placeholder="Street Name (required)"
               />
-              <label for="zip"><b>Zip Code</b></label>
+              <label for="postalcode"><b>Postal Code</b></label>
               <Input
                 onChange={handleInputChange}
-                name="zip"
-                placeholder="Zip Code (required)"
+                name="postalcode"
+                placeholder="Postal Code (required)"
               />
               <label for="spaces"><b>Number of Spaces</b></label>
-              <Input
+              <Input 
                 onChange={handleInputChange}
                 disabled
                 name="spaces"
                 placeholder="6 (To be implemented)"
               />
+              <label for="ManagerId"><b>Your ID number</b></label>
+              <Input
+                onChange={handleInputChange}
+                name="ManagerId"
+                placeholder="Id (required)"
+              />
               <FormBtn
-                disabled={!(formObject.street && formObject.zip)}
+                disabled={!(formObject.street && formObject.postalcode && formObject.ManagerId)}
                 onClick={handleFormSubmit}
               >
-                Submit Book
+                Submit
               </FormBtn>
-              <Link to={"/managerhome"}>
-              <button className="btn btn-danger">Cancel</button>
-              </Link>
               </div>
             </form>
+        </div>
     )
 }
 
