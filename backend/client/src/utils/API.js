@@ -18,10 +18,13 @@ export default {
     return axios.get("/api/parkingspacesbyUserId/1");
   },
   // // Gets all parkinglots by zip code
-  // getParkingSpacesByUserId: function() {
-  //   return axios.get("/api/parkingspacesbyUserId/1");
+  // getParkingLotByZip: function() {
+  //   return axios.get("/api/parkinglotsByZip");
   // },
-  
+  // // Gets all parkinglots
+  // getAllParkingLots: function() {
+  //   return axios.get("/api/parkinglots");
+  // },
 
   //GETS for MANAGERPAGE
   // Gets all parking lots with the given manager id
@@ -31,9 +34,9 @@ export default {
   
   //POST
   // Saves new garage to garage table
-  // saveGarage: function(garageData) {
-  //   return axios.post("/api/parkinglots", garageData);
-  // }
+  saveGarage: function(garageData) {
+    return axios.post("/api/parkinglots/create", garageData);
+  }
 
 };
 
