@@ -13,8 +13,10 @@ var PORT = process.env.PORT || 8080;
 // adding and updating to our database
 var db = require("./models");
 
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static("public"));
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -29,7 +31,7 @@ app.use(passport.session());
 // =============================================================
 // require("./routes/guests.js")(app);
 // require("./routes/managers.js")(app);
-// require("./routes/parkinglots.js")(app);
+require("./routes/parkinglots.js")(app);
 require("./routes/parkingspaces.js")(app);
 require("./routes/users.js")(app);
 
