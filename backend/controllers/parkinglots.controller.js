@@ -16,3 +16,14 @@ exports.create = (req, res) => {
     res.status(500).send("Error -> " + err);
   })
 };
+
+// Fetch all Parking Lots
+exports.findAll = (req, res) => {
+  console.log("inside findAll block")
+  Parkinglots.findAll().then(Parkinglots => {
+    // Send all Parkinglots to Client
+    res.send(Parkinglots);
+  }).catch(err => {
+    res.status(500).send("Error -> " + err);
+  })
+};
