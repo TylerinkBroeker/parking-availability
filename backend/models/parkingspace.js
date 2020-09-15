@@ -2,6 +2,9 @@ module.exports = (sequelize, Sequelize) => {
     const Parkingspace = sequelize.define('Parkingspace', {
       parkingspacenumber: {
         type: Sequelize.STRING
+      },
+      isAvailable: {
+        type: Sequelize.BOOLEAN
       }
     });
     Parkingspace.associate = function(models) {
