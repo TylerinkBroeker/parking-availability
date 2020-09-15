@@ -38,3 +38,16 @@ exports.findAll = (req, res) => {
     res.status(500).send("Error -> " + err);
   })
 };
+
+exports.findByparkinglotId = (req, res) => {  
+  console.log("find by parkinglotId")
+  Parkingspaces.findAll({
+    where: {
+      parkinglotId: req.params.parkinglotId
+    }
+  }).then(parkingspaces => {
+    res.send(parkingspaces);
+  }).catch(err => {
+    res.status(500).send("Error -> " + err);
+  })
+};

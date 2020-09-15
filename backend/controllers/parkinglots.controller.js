@@ -1,4 +1,5 @@
 const db = require('../models');
+const parkinglots = require('../routes/parkinglots');
   const Parkinglots = db.Parkinglot;
   console.log(db);
  
@@ -23,6 +24,32 @@ exports.findAll = (req, res) => {
   Parkinglots.findAll().then(Parkinglots => {
     // Send all Parkinglots to Client
     res.send(Parkinglots);
+  }).catch(err => {
+    res.status(500).send("Error -> " + err);
+  })
+};
+
+exports.findBypostalcode = (req, res) => {  
+  console.log("find by postal code")
+  Parkinglots.findAll({
+    where: {
+      postalcode: req.params.postalcode
+    }
+  }).then(parkinglots => {
+    res.send(parkinglots);
+  }).catch(err => {
+    res.status(500).send("Error -> " + err);
+  })
+};
+
+exports.findBymanagerId = (req, res) => {  
+  console.log("find by managerId")
+  Parkinglots.findAll({
+    where: {
+      managerId: req.params.managerId
+    }
+  }).then(parkinglots => {
+    res.send(parkinglots);
   }).catch(err => {
     res.status(500).send("Error -> " + err);
   })
