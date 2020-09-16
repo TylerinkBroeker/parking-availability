@@ -1,64 +1,62 @@
-import React,  { useState, useEffect } from 'react';
+import React, { Component } from "react";
+import API from "../utils/API";
+import Container from "../components/Container";
+import SearchForm from "../components/SearchForm";
+import SearchResults from "../components/SearchResults";
+import Alert from "../components/Alert";
 import { UserNavBar } from '../components/NavBar';
-import { List, ListItem } from '../components/List';
-import API from '../utils/API';
-import Searchbox from '../components/SearchBox';
-import Searchbutton from '../components/SearchButton';
 
-function Search() {
+class Search extends Component {
+  state = {
+    search: "",
+    garages: [],
+    results: [],
+    error: ""
+  };
 
-    const [garages, setGarages] = useState([])
+  componentDidMount() {
+    API.getAllParkingLots()
+      .then(res => this.setState({ garages: res.data.message }))
+      .catch(err => console.log(err));
+  }
 
-    useEffect(() => {
-        loadGarages()
-    }, [])
+  handleInputChange = event => {
+    this.setState({ search: event.target.value });
+  };
 
-    function loadGarages() {
-        API.getAllParkingLots()
-            .then(res =>
-                setGarages(res.data)
-            )
-            .catch(err => console.log(err));
-    };
-
-    function selectGarage(selection) {
-        console.log("click!" + selection)
-        //Will pull garage's info and render it on right
-        //will pull all spaces in garage and render them as color coded to available/not
-    }
-
-    // handleChange = (e) =>{
-    //     this.setState({searchField:e.target.value})
-    // }
-
+  handleFormSubmit = event => {
+    event.preventDefault();
+    API.getParkingLotByPostalCode(this.state.search)
+      .then(res => {
+        if (res.data.status === "error") {
+          throw new Error(res.data.message);
+        }
+        this.setState({ results: res.data.message, error: "" });
+      })
+      .catch(err => this.setState({ error: err.message }));
+  };
+  render() {
     return (
-        <div>
-            <UserNavBar />
-            <div className="container col-sm-5" style={{float: "left"}}>
-                <h2>Garage Search</h2>
-                <Searchbox />
-                <Searchbutton />
-                <hr />
-                {garages.length ? (
-              <List>
-                {garages.map(garage => (
-                  <ListItem key={garage._id}>
-                      <div onClick={() => selectGarage(garage.id)}>
-                      Garage at {garage.postalcode}
-                      </div>
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-            </div>
-            {/* <div className="container col-sm-5" style={{float: "right"}}>
-                <h2>Current Selected Garage Graphic:</h2>
-                <GarageGraphic />
-            </div> */}
-        </div>
-    )
+      <div>
+        <UserNavBar />
+        <Container style={{ minHeight: "80%" }}>
+          <h1 className="text-center">Search By Postal Code</h1>
+          <Alert
+            type="danger"
+            style={{ opacity: this.state.error ? 1 : 0, marginBottom: 10 }}
+          >
+            {this.state.error}
+          </Alert>
+          <SearchForm
+            handleFormSubmit={this.handleFormSubmit}
+            handleInputChange={this.handleInputChange}
+            garages={this.state.garages}
+          />
+          <SearchResults results={this.state.results} />
+        </Container>
+      </div>
+    );
+  }
 }
 
 export default Search;
