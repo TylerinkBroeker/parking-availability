@@ -9,17 +9,21 @@ import './style.css';
 //THANKS AGAIN TO W3 SCHOOLS FOR THE TOGGLE AND CSS FOR IT!
 
 function SpaceToggle() {
-
-return (
-    <div>
-    <label className="switch">
-        <input type="checkbox" />
-        <span className="slider"></span>
-    </label>
-  </div>
+  return (
+    <input type="checkbox" name="name" id="id" onClick={() => console.log("switch!")}/>
 )
-
 }
 
 export default SpaceToggle;
+
+{/* <input type="checkbox" name="name" id="id" onClick={() => console.log("switch!")}/> */}
+
+// return (
+//   <div>
+//   <label className="switch">
+//       <input type="checkbox" name="name" id="id" />
+//       <span className="slider"></span>
+//   </label>
+// </div>
+// )
 
