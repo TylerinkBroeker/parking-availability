@@ -2,8 +2,11 @@ import React,  { useState, useEffect } from 'react';
 import { UserNavBar } from '../components/NavBar';
 import { List, ListItem } from '../components/List';
 import API from '../utils/API';
+import Searchbox from '../components/SearchBox';
+import Searchbutton from '../components/SearchButton';
 
 function Search() {
+
     const [garages, setGarages] = useState([])
 
     useEffect(() => {
@@ -24,19 +27,24 @@ function Search() {
         //will pull all spaces in garage and render them as color coded to available/not
     }
 
+    // handleChange = (e) =>{
+    //     this.setState({searchField:e.target.value})
+    // }
+
     return (
         <div>
             <UserNavBar />
-            <h1 style={{paddingTop: "50px"}}>Search</h1>
-            <hr />
             <div className="container col-sm-5" style={{float: "left"}}>
-                <h2>All Garages</h2>
+                <h2>Garage Search</h2>
+                <Searchbox />
+                <Searchbutton />
+                <hr />
                 {garages.length ? (
               <List>
                 {garages.map(garage => (
                   <ListItem key={garage._id}>
                       <div onClick={() => selectGarage(garage.id)}>
-                      Garage at {garage.street} street
+                      Garage at {garage.postalcode}
                       </div>
                   </ListItem>
                 ))}
@@ -52,6 +60,5 @@ function Search() {
         </div>
     )
 }
-
 
 export default Search;
