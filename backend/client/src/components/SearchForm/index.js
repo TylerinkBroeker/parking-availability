@@ -16,7 +16,7 @@ function SearchForm(props) {
           placeholder="Postal Code"
           id="garage"
         />
-        <datalist id="Postal Code">
+        <datalist id="garage_list">
           {props.garages.map(garage => (
             <option value={garage} key={garage} />
           ))}

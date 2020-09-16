@@ -16,8 +16,11 @@ class Search extends Component {
 
   componentDidMount() {
     API.getAllParkingLots()
-      .then(res => this.setState({ garages: res.data.message }))
-      .catch(err => console.log(err));
+    .then(res => {
+      console.log(res);
+      this.setState({ parking: res.data.message })
+     })
+    .catch(err => console.log(err));
   }
 
   handleInputChange = event => {
@@ -26,7 +29,7 @@ class Search extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.getParkingLotByPostalCode(this.state.search)
+    API.getByPostalCode(this.state.search)
       .then(res => {
         if (res.data.status === "error") {
           throw new Error(res.data.message);

@@ -18,9 +18,9 @@ export default {
     return axios.get("/api/parkingspacesbyparkinglotId/" + id);
   },
   // // Gets all parkinglots by zip code
-  // getParkingLotByZip: function() {
-  //   return axios.get("/api/parkinglotsByZip");
-  // },
+  getByPostalCode: function(data) {
+    return axios.get("/api/parkinglotsbypostalcode/" + data);
+  },
   // // Gets all parkinglots
   getAllParkingLots: function() {
     return axios.get("/api/parkinglots");
