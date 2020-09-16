@@ -7,23 +7,11 @@ const parkingspaces = require('../routes/parkingspaces');
 exports.create = (req, res) => {  
   // Save Parkingspace to MySQL database
   Parkingspaces.create({  
-    Parkingspaces: req.body.parkingspace
+    parkingspacenumber: req.body.parkingspacenumber,
+    isAvailable: req.body.isAvailable
   }).then(parkingspace => {
     // Send created parkingspace to client
     res.send(parkingspace);
-  }).catch(err => {
-    res.status(500).send("Error -> " + err);
-  })
-};
-
-exports.findByuserId = (req, res) => {  
-  console.log("find by user Id")
-  Parkingspaces.findAll({
-    where: {
-      UserId: req.params.userId
-    }
-  }).then(parkingspaces => {
-    res.send(parkingspaces);
   }).catch(err => {
     res.status(500).send("Error -> " + err);
   })
@@ -39,6 +27,31 @@ exports.findAll = (req, res) => {
   })
 };
 
+// Find a Parkingspace by Id
+exports.findByPk = (req, res) => {  
+  console.log("inside findByPk block")
+  Parkingspaces.findByPk(req.params.parkingspaceId).then(Parkingspaces => {
+    res.send(Parkingspaces);
+  }).catch(err => {
+    res.status(500).send("Error -> " + err);
+  })
+};
+
+// Find all parkingspaces by UserId
+exports.findByuserId = (req, res) => {  
+  console.log("find by user Id")
+  Parkingspaces.findAll({
+    where: {
+      userId: req.params.userId
+    }
+  }).then(parkingspaces => {
+    res.send(parkingspaces);
+  }).catch(err => {
+    res.status(500).send("Error -> " + err);
+  })
+};
+
+// Find all parkingspaces by ParkinglotId
 exports.findByparkinglotId = (req, res) => {  
   console.log("find by parkinglotId")
   Parkingspaces.findAll({
@@ -47,6 +60,22 @@ exports.findByparkinglotId = (req, res) => {
     }
   }).then(parkingspaces => {
     res.send(parkingspaces);
+  }).catch(err => {
+    res.status(500).send("Error -> " + err);
+  })
+};
+
+// PUT route for updating Parkingspaces.
+exports.update = (req, res) => {
+  console.log("inside update block")
+  Parkingspaces.update({
+    isAvailable: req.body.isAvailable
+  }, {
+    where: {
+      id: req.body.id
+    }
+  }).then(Parkingspaces => {
+    res.send(Parkingspaces);
   }).catch(err => {
     res.status(500).send("Error -> " + err);
   })
