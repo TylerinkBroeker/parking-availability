@@ -8,10 +8,15 @@ import '../style/style.css';
 
 function ManagerHome() {
     const [garages, setGarages] = useState([])
+    //const [spaces, setSpaces] = useState([])
 
     useEffect(() => {
         loadGarages()
     }, [])
+
+    // useEffect(() => {
+    //     loadSpaces()
+    // }, [])
 
     function loadGarages() {
         API.getLotByManagerId()
@@ -20,6 +25,10 @@ function ManagerHome() {
             )
             .catch(err => console.log(err));
     };
+
+    // function loadSpaces() {
+    //     API.
+    // }
 
     function selectGarage(selection) {
         console.log("click!" + selection)
