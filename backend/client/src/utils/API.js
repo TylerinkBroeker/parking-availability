@@ -22,9 +22,9 @@ export default {
   //   return axios.get("/api/parkinglotsByZip");
   // },
   // // Gets all parkinglots
-  // getAllParkingLots: function() {
-  //   return axios.get("/api/parkinglots");
-  // },
+  getAllParkingLots: function() {
+    return axios.get("/api/parkinglots");
+  },
 
   //GETS for MANAGERPAGE
   // Gets all parking lots with the given manager id
