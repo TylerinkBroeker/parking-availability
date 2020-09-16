@@ -14,8 +14,8 @@ export default {
     return axios.get("/api/parkingspacesbyUserId/1");
   },
   // Gets all parkinglots with the given user id
-  getParkingSpacesByUserId: function() {
-    return axios.get("/api/parkingspacesbyUserId/1");
+  getParkingSpacesByLotId: function(id) {
+    return axios.get("/api/parkingspacesbyparkinglotId/" + id);
   },
   // // Gets all parkinglots by zip code
   // getParkingLotByZip: function() {
