@@ -1,9 +1,9 @@
-// const managers = require('../controllers/managers.controller.js');
+const managers = require('../controllers/managers.controller.js');
 
-// module.exports = function(app) {
+module.exports = function(app) {
  
-    // Create a new Manager
-    // app.post('/api/managers/create', managers.create);
+    //Create a new Manager
+    app.post('/api/managers/create', managers.create);
  
     // // // Retrieve all Managers
     // app.get('/api/managers', managers.findAll);
@@ -16,4 +16,4 @@
  
     // // Delete a Manager with Id
     // app.delete('/api/managers/:managerId', managers.delete);
-// }
+}
