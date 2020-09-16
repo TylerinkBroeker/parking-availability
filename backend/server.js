@@ -30,10 +30,10 @@ app.use(passport.session());
 // Routes
 // =============================================================
 // require("./routes/guests.js")(app);
-// require("./routes/managers.js")(app);
 require("./routes/parkinglots.js")(app);
 require("./routes/parkingspaces.js")(app);
 require("./routes/users.js")(app);
+require("./routes/managers.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

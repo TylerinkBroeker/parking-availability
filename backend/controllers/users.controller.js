@@ -10,7 +10,6 @@ exports.create = (req, res) => {
     lastname: req.body.lastname,
     email: req.body.email,
     password: req.body.password,
-    parkingspace: req.body.parkingspace
   }).then(Users => {
     // Send created user to client
     res.send(Users);
