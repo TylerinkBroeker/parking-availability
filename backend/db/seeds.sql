@@ -29,10 +29,11 @@ INSERT INTO parkingspaces VALUES (4, 4, true, "2020-07-08 00:33:41", "2020-07-08
 INSERT INTO parkingspaces VALUES (5, 5, true, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 1, null);
 INSERT INTO parkingspaces VALUES (6, 6, true, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 1, null);
 
-INSERT INTO parkingspaces VALUES (7, 1, false, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 2, 1);
-INSERT INTO parkingspaces VALUES (8, 2, true, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 2, 2);
-INSERT INTO parkingspaces VALUES (9, 3, false, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 2, 3);
-INSERT INTO parkingspaces VALUES (10, 4, true, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 2, null);
-INSERT INTO parkingspaces VALUES (11, 5, true, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 2, null);
-INSERT INTO parkingspaces VALUES (12, 6, false, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 2, null);
+INSERT INTO parkingspaces VALUES (7, 1, false, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 4, 1);
+INSERT INTO parkingspaces VALUES (8, 2, true, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 4, 2);
+INSERT INTO parkingspaces VALUES (9, 3, false, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 4, 3);
+INSERT INTO parkingspaces VALUES (10, 4, true, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 4, null);
+INSERT INTO parkingspaces VALUES (11, 5, true, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 4, null);
+INSERT INTO parkingspaces VALUES (12, 6, false, "2020-07-08 00:33:41", "2020-07-08 00:33:41", 4, null);
+
 
