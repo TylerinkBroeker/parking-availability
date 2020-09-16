@@ -12,12 +12,11 @@ module.exports = function(app) {
     // Retrieve all Parkinglots by Postal Code
     app.get('/api/parkinglotsbypostalcode/:postalcode', parkinglots.findBypostalcode);
  
-    // Retrieve all Parkingspaces by User Id
+    // Retrieve all Parkinglots by Manager Id
     app.get('/api/parkinglotsbymanagerId/:managerId', parkinglots.findBymanagerId);
  
-    
-    // // // Retrieve a single Parkinglot by Id
-    // app.get('/api/parkinglots/:parkinglotId', parkinglots.findByPk);
+    // // Retrieve a single Parkinglot by Id
+    app.get('/api/parkinglots/:parkinglotId', parkinglots.findByPk);
    
     // // // Update a Parkinglot with Id
     // app.put('/api/parkinglots/:parkinglotId', parkinglots.update);

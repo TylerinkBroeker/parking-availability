@@ -29,6 +29,8 @@ exports.findAll = (req, res) => {
   })
 };
 
+
+// Find all parkinglots by Postal Code
 exports.findBypostalcode = (req, res) => {  
   console.log("find by postal code")
   Parkinglots.findAll({
@@ -42,6 +44,7 @@ exports.findBypostalcode = (req, res) => {
   })
 };
 
+//Find all parkinglots by managerId
 exports.findBymanagerId = (req, res) => {  
   console.log("find by managerId")
   Parkinglots.findAll({
@@ -50,6 +53,16 @@ exports.findBymanagerId = (req, res) => {
     }
   }).then(parkinglots => {
     res.send(parkinglots);
+  }).catch(err => {
+    res.status(500).send("Error -> " + err);
+  })
+};
+
+// Find a single Parkinglot by Id
+exports.findByPk = (req, res) => {  
+  console.log("inside findByPk block")
+  Parkinglots.findByPk(req.params.parkinglotId).then(Parkinglots => {
+    res.send(Parkinglots);
   }).catch(err => {
     res.status(500).send("Error -> " + err);
   })
