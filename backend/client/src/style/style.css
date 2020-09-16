@@ -1,9 +1,9 @@
 li {
     margin-bottom: 15px;
   }
-  li {
+li {
     cursor: pointer;
   }
-  li:hover {
+li:hover {
     background-color: #ccc;
   }

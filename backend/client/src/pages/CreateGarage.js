@@ -15,16 +15,27 @@ function GarageForm() {
       };
 
     //Either generate spaces here or add a button click to do it after garage is made, or maybe from managerHome screen.
-    // function createGarageSpots(lotId) {
-    //   for(let i=0;i<6;i++) {
-    //     API.createParkingSpace({
-    //       parkingspacenumber: i + 1,
-    //       isAvailable: true,
-    //       ParkinglotId: lotId,
-    //       UserId: ""
-    //     })
-    //   }
-    // }
+    function createGarageSpots() {
+
+        API.createParkingSpace({
+          parkingspacenumber: 1,
+          isAvailable: true,
+          ParkinglotId: 1,
+          UserId: null
+        }) 
+        .then(alert("New Space Saved"))
+        .catch(err => console.log(err));
+        console.log("API call just ran")
+      // for(let i=0;i<6;i++) {
+      //   API.createParkingSpace({
+      //     parkingspacenumber: i + 1,
+      //     isAvailable: true,
+      //     ParkinglotId: lotId,
+      //     UserId: ""
+      //   })
+      // }
+    }
+
 
     function handleFormSubmit(event) {
         event.preventDefault();
@@ -81,6 +92,9 @@ function GarageForm() {
               </FormBtn>
               </div>
             </form>
+            <div>
+              <button onClick={createGarageSpots}>CreateSpots</button>
+            </div>
         </div>
     )
 }

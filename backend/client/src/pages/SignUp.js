@@ -1,47 +1,122 @@
-import React from 'react';
-import { SignUpForm } from '../components/Form';
-//import { Input, FormBtn } from '../components/Form';
-//import { Link } from "react-router-dom";
-
-// function handleFormSubmit(event) {
-//     event.preventDefault();
-//     if (formObject.uName && formObject.uPswd && formObject.email) {
-//       API.saveNewUser({
-//         uName: formObject.uName,
-//         uPswd: formObject.uPswd,
-//         email: formObject.email
-//       })
-//         .then(res => go to login page())
-//         .catch(err => console.log(err));
-//     }
-//   };
-
+import React, { useState, useEffect } from "react";
+import { Input, FormBtn } from '../components/Form';
+import API from '../utils/API';
+import { Link } from "react-router-dom";
 
 function SignUp() {
+
+    const [formObject, setFormObject] = useState({})
+
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        setFormObject({ ...formObject, [name]: value })
+    };
+
+    function handleUserSubmit(event) {
+        event.preventDefault();
+        if (formObject.email && formObject.password && formObject.firstname && formObject.lastname) {
+            API.createUser({
+                firstname: formObject.firstname,
+                lastname: formObject.lastname,
+                email: formObject.email,
+                password: formObject.password
+            })
+            .then(alert("User Created!"))
+        }
+    };
+
+    function handleManagerSubmit(event) {
+        event.preventDefault();
+        if (formObject.email && formObject.password && formObject.firstname && formObject.lastname) {
+            API.createManager({
+                firstname: formObject.firstname,
+                lastname: formObject.lastname,
+                email: formObject.email,
+                password: formObject.password
+            })
+            .then(alert("Manager Created!"))
+        }
+    }
+
     return (
-        <SignUpForm />
+        <div>
+            <form className="user-form">
+                <div className="container" style={{ padding: "50px" }}>
+                    <h2>Sign Up As A User</h2>
+                    <label for="firstname"><b>First Name</b></label>
+                    <Input
+                        onChange={handleInputChange}
+                        name="firstname"
+                        placeholder="First Name"
+                    />
+                    <label for="lastname"><b>Last Name</b></label>
+                    <Input
+                        onChange={handleInputChange}
+                        name="lastname"
+                        placeholder="Last Name"
+                    /> 
+                    <label for="email"><b>Email Address</b></label>
+                    <Input
+                        onChange={handleInputChange}
+                        name="email"
+                        placeholder="Email (required)"
+                    />
+                    <label for="password"><b>Password</b></label>
+                    <Input type="password"
+                        onChange={handleInputChange}
+                        name="password"
+                        placeholder="Password (required)"
+                    />
+                    <FormBtn
+                        disabled={!(formObject.email && formObject.password && formObject.firstname && formObject.lastname)}
+                        onClick={handleUserSubmit}
+                    >
+                        Submit
+              </FormBtn>
+                </div>
+            </form>
+
+            <form className="user-form">
+                <div className="container" style={{ padding: "50px" }}>
+                    <h2>Sign Up As A Manager</h2>
+                    <label for="firstname"><b>First Name</b></label>
+                    <Input
+                        onChange={handleInputChange}
+                        name="firstname"
+                        placeholder="First Name"
+                    />
+                    <label for="lastname"><b>Last Name</b></label>
+                    <Input
+                        onChange={handleInputChange}
+                        name="lastname"
+                        placeholder="Last Name"
+                    /> 
+                    <label for="email"><b>Email Address</b></label>
+                    <Input
+                        onChange={handleInputChange}
+                        name="email"
+                        placeholder="Email (required)"
+                    />
+                    <label for="password"><b>Password</b></label>
+                    <Input type="password"
+                        onChange={handleInputChange}
+                        name="password"
+                        placeholder="Password (required)"
+                    />
+                    <FormBtn
+                        disabled={!(formObject.email && formObject.password && formObject.firstname && formObject.lastname)}
+                        onClick={handleManagerSubmit}
+                    >
+                        Submit
+              </FormBtn>
+                </div>
+            </form>
+
+            <div className="container signin">
+                    <p>Already have an account? <Link to={"/login"}>Sign in</Link>!</p>
+                </div>
+        </div>
     )
 }
 
 export default SignUp;
-
-
-        // <div>
-        //     <h1>Fill out form to sign up!</h1>
-        //     <div>
-        //         <Input 
-        //         name="title"
-        //         placeholder="Title (required)"
-        //         />
-        //         <FormBtn>
-        //             Create Account!
-        //         </FormBtn>
-        //     </div>
-
-        // </div>
-
-        {/* <Input
-                onChange={handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              /> */}

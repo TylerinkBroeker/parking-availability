@@ -35,14 +35,27 @@ export default {
   getLotByManagerId: function() {
     return axios.get("/api/parkinglotsbymanagerId/1");
   },
-  
+  // Gets all parking lots with the given manager id
+  // getSpacesByLotId: function(lotId) {
+  //   return axios.get("/api/parkingspacebylotId/" + lotId);
+  // },
+
   //POST
   // Saves new garage to garage table
   saveGarage: function(garageData) {
     return axios.post("/api/parkinglots/create", garageData);
   },
+  // Creates a new parking space
   createParkingSpace: function(spaceData) {
     return axios.post("/api/parkingspaces/create", spaceData)
+  },
+  //Creates a new user
+  createUser: function(userData) {
+    return axios.post("/api/users/create", userData)
+  },
+  //Creates a new manager
+  createManager: function(managerData) {
+    return axios.post("/api/managers/create", managerData)
   }
 
 };
