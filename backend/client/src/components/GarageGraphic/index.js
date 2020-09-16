@@ -1,19 +1,50 @@
 import React from 'react';
 
-function GarageGraphic() {
-    return (
+export function ParkingGarage({ children }) {
+  return (
+    <div className="container">
+      <div className="row">{children}</div>
+    </div>
+  );
+}
 
-    <div className="wrapper">
-                    <div className="one">One</div>
-                    <div className="two">Two</div>
-                    <div className="three">Three</div>
-                    <div className="four">Four</div>
-                    <div className="five">Five</div>
-                    <div className="six">Six</div>
-                </div>
-    )         
+export function ParkingSpace({ children }) {
+        if(children === true) {
+            return (
+                <div style={{background: "green", margin: "2px"}} className="card col-sm-2">
+                    Parking space number
+                </div>);
+        } else {
+            return (
+                <div style={{background: "red", margin: "2px"}} className="card col-sm-2">
+                    Parking space number
+                </div>);
+        }
 }
 
 
+// function GarageGraphic({ children }) {
+//     return (
 
-export default GarageGraphic;
+//     <div className="container">
+//         <div className="row">
+//             <div className="card col-sm-2">Parking space number {children}</div>
+//             <div className="card col-sm-2">Parking space number</div>
+//             <div className="card col-sm-2">Parking space number</div>
+//             <div className="card col-sm-2">Parking space number</div>
+//             <div className="card col-sm-2">Parking space number</div>
+//             <div className="card col-sm-2">Parking space number</div>
+//         </div>
+                    
+//     </div>
+//     )         
+// }
+
+// export default GarageGraphic;
+
+{/* <card className="card col-sm-2">One</card>
+                    <card className="card col-sm-2">Two</card>
+                    <card className="card col-sm-2">Three</card>
+                    <card className="card col-sm-2">Four</card>
+                    <card className="card col-sm-2">Five</card>
+                    <card className="card col-sm-2">Six</card> */}
