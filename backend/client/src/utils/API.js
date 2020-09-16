@@ -56,7 +56,13 @@ export default {
   //Creates a new manager
   createManager: function(managerData) {
     return axios.post("/api/managers/create", managerData)
+  },
+
+  //PUT
+  updateSpaceAvailability: function(id, spaceData) {
+    return axios.put("/api/parkingspaces/" + id, spaceData)
   }
+  
 
 };
 

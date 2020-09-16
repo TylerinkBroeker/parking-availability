@@ -13,63 +13,76 @@ import '../style/style.css';
 
 
 function UserHome(props) {
-    const [spaces, setSpaces] = useState([])
-
-    useEffect(() => {
-        loadSpaces()
-    }, [])
-
-    function loadSpaces() {
-        API.getParkingSpacesByUserId()
-            .then(res =>
-                setSpaces(res.data)
-            )
-            .catch(err => console.log(err));
-    };
-
-    function getUserInfo() {
-      API.getUserById()
-      .then(res => 
-        console.log(res.data.firstname))
-    }
-
-    function selectParkingSpace(selection) {
-      console.log("click!" + selection)
-      //Will pull and display data for selected space's garage
-      //Will set toggle switch to selected space id
+  const [spaces, setSpaces] = useState([])
+  let selectedSpace = {
+    id: "",
+    available: true
   }
 
-    getUserInfo();
+  useEffect(() => {
+    loadSpaces()
+  }, [])
 
-    return (
-        <div>
-          <UserNavBar />
-          <h1 style={{paddingTop: "50px"}}>Welcome User's Name!</h1>
-            <hr />
-            
-            <div className="container col-sm-5" style={{ float: "left" }}>
-                <h2>Your Spots</h2>
-                {spaces.length ? (
-              <List>
-                {spaces.map(space => (
-                  <ListItem key={space._id}>
-                    <div onClick={() => selectParkingSpace(space.id)}>
-                    Parking Space # {space.id}
-                    </div>
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-            </div>
-            
-            <div className="container col-sm-5" style={{ float: "right" }}>
-                <h2>Your parking spot</h2>
-                <SpotController />
-            </div>
-        </div>
-    )
+  function loadSpaces() {
+    API.getParkingSpacesByUserId()
+      .then(res =>
+        setSpaces(res.data)
+      )
+      .catch(err => console.log(err));
+  };
+
+  // function getSpaceData(id) {
+  //  This will be where you can load up parking lot data for the selected space  
+  // }
+
+  function selectParkingSpace(selection) {
+    console.log("click!")
+    selectedSpace = selection;
+    //Will pull and display data for selected space's garage
+    //Will set toggle switch to selected space id
+    console.log(selectedSpace)
+  }
+
+  function toggleParkingSpace() {
+    console.log("Switch!")
+    //API.updateSpaceAvailability()
+  }
+
+  return (
+    <div>
+      <UserNavBar />
+      <h1 style={{ paddingTop: "50px" }}>Welcome User's Name!</h1>
+      <hr />
+
+      <div className="container col-sm-5" style={{ float: "left" }}>
+        <h2>Your Spots</h2>
+        {spaces.length ? (
+          <List>
+            {spaces.map(space => (
+              <ListItem key={space._id}>
+                <div onClick={() => selectParkingSpace(space.id)}>
+                  Parking Space # {space.id}
+                </div>
+              </ListItem>
+            ))}
+          </List>
+        ) : (
+            <h3>No Results to Display</h3>
+          )}
+      </div>
+
+      <div className="container col-sm-5" style={{ float: "right" }}>
+        <h2>Your parking spot</h2>
+          <div>
+            <button onClick={toggleParkingSpace}>Available</button>
+            <button onClick={toggleParkingSpace}>Unavailable</button>
+          </div>
+      </div>
+    </div>
+  )
 }
 
 export default UserHome;
+
+
+{/* <input type="checkbox" name="name" id="id" onClick={toggleParkingSpace}/> */}
