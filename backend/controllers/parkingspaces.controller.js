@@ -8,7 +8,8 @@ exports.create = (req, res) => {
   // Save Parkingspace to MySQL database
   Parkingspaces.create({  
     parkingspacenumber: req.body.parkingspacenumber,
-    isAvailable: req.body.isAvailable
+    isAvailable: req.body.isAvailable,
+    ParkinglotId: req.body.ParkinglotId
   }).then(parkingspace => {
     // Send created parkingspace to client
     res.send(parkingspace);

@@ -9,7 +9,8 @@ exports.create = (req, res) => {
   Parkinglots.create({  
     street: req.body.street,
     postalcode: req.body.postalcode,
-    totalspaces: req.body.totalspaces    
+    totalspaces: req.body.totalspaces,
+    ManagerId: req.body.ManagerId    
   }).then(Parkinglots => {
     // Send created parkinglot to client
     res.send(Parkinglots);

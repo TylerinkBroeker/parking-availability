@@ -25,11 +25,7 @@ module.exports = (sequelize, Sequelize) => {
     Parkinglot.associate = function(models) {
       // We're saying that a Guest should belong to a User 
       // A Guest can't be created without a User due to the foreign key constraint
-      Parkinglot.belongsTo(models.Manager, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
+      Parkinglot.belongsTo(models.Manager)
   };
 
       return Parkinglot;
