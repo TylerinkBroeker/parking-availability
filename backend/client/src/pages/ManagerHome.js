@@ -5,18 +5,10 @@ import { ManagerNavBar } from '../components/NavBar';
 import API from '../utils/API';
 import '../style/style.css';
 
-const styles = {
-    available: {
-      background: "green"
-    },
-    notAvailable: {
-      background: "red"
-    }
-  }
-
 function ManagerHome() {
     const [garages, setGarages] = useState([])
     const [spaces, setSpaces] = useState([])
+    const [currentGarage, setCurrentGarage] = useState()
 
     useEffect(() => {
         loadGarages()
@@ -44,8 +36,21 @@ function ManagerHome() {
 
     function selectGarage(selection) {
         loadSpaces(selection)
-        
+        setCurrentGarage(selection)
+        console.log(currentGarage)
     }
+
+    function createGarageSpots() {
+        for(let i=0;i<6;i++) {
+            API.createParkingSpace({  
+            parkingspacenumber: i + 1,
+            isAvailable: true,
+            ParkinglotId: currentGarage,
+            UserId: ""
+          })
+        }  
+          console.log("API call just ran")
+      }
 
     
     
@@ -81,7 +86,14 @@ function ManagerHome() {
                         ))}
                     </ParkingGarage>
                 ) : (
-                        <h3>No Results to Display</h3>
+                        <div>
+                            <h3>No Results to Display</h3>
+                            <p>Perhaps you need to generate the parking spaces?</p>
+                            <button className="btn btn-success" 
+                            onClick={createGarageSpots}>
+                                Generate Parking Spaces
+                            </button>
+                        </div>
                     )}
             </div>
         </div>
