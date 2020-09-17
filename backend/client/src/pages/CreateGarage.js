@@ -15,26 +15,19 @@ function GarageForm() {
       };
 
     //Either generate spaces here or add a button click to do it after garage is made, or maybe from managerHome screen.
-    function createGarageSpots() {
-
-        API.createParkingSpace({
-          parkingspacenumber: 1,
-          isAvailable: true,
-          ParkinglotId: 1,
-          UserId: null
-        }) 
-        .then(alert("New Space Saved"))
-        .catch(err => console.log(err));
-        console.log("API call just ran")
-      // for(let i=0;i<6;i++) {
-      //   API.createParkingSpace({
-      //     parkingspacenumber: i + 1,
-      //     isAvailable: true,
-      //     ParkinglotId: lotId,
-      //     UserId: ""
-      //   })
-      // }
-    }
+    // function createGarageSpots(lotId) {
+    //   for(let i=0;i<6;i++) {
+    //     API.createParkingSpace({
+    //       parkingspacenumber: i + 1,
+    //       isAvailable: true,
+    //       ParkinglotId: lotId,
+    //       UserId: ""
+    //     })
+    //     .then(console.log("New Space Saved"))
+    //     .catch(err => console.log(err));
+    //   }  
+    //     console.log("API call just ran")
+    // }
 
 
     function handleFormSubmit(event) {
@@ -49,7 +42,7 @@ function GarageForm() {
           /*.then(API.getLastLotId() -->get just id number of last lot added
               .then(createGarageSpots(lotId)))*/
             // .then(createGarageSpots(3))
-            .then(alert("New Garage Saved"))
+            .then(alert("New Garage Saved. Do not forget to add spots in your home page!"))
             .catch(err => console.log(err));
         }
       };
@@ -92,9 +85,6 @@ function GarageForm() {
               </FormBtn>
               </div>
             </form>
-            <div>
-              <button onClick={createGarageSpots}>CreateSpots</button>
-            </div>
         </div>
     )
 }
