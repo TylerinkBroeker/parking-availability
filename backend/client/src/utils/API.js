@@ -6,12 +6,12 @@ export default {
 
   //GETS for USERPAGE
   // Gets user info by user id
-  getUserById: function() {
-    return axios.get("/api/users/1");//Remember to change to be logged in user's id
+  getUserById: function(id) {
+    return axios.get("/api/users/" + id);
   },
   // Gets all parkingspaces with the given user id
-  getParkingSpacesByUserId: function() {
-    return axios.get("/api/parkingspacesbyUserId/1");
+  getParkingSpacesByUserId: function(id) {
+    return axios.get("/api/parkingspacesbyUserId/" + id);
   },
   // Gets all parkinglots with the given user id
   getParkingSpacesByLotId: function(id) {
@@ -25,6 +25,14 @@ export default {
   getAllParkingLots: function() {
     return axios.get("/api/parkinglots");
   },
+  // Gets parkingspace by id
+  getParkingSpacesById: function(id) {
+    return axios.get("/api/parkingspaces/" + id);
+  }, 
+  // Gets parking lot by id
+  getParkingLotById: function(id) {
+    return axios.get("/api/parkinglots/" + id);
+  },
 
   //GETS for MANAGERPAGE
   // Gets all parking lots with the given manager id
@@ -32,8 +40,8 @@ export default {
   //   return axios.get("/api/managers/:managerId");
   // }
   // Gets all parking lots with the given manager id
-  getLotByManagerId: function() {
-    return axios.get("/api/parkinglotsbymanagerId/1");
+  getLotByManagerId: function(id) {
+    return axios.get("/api/parkinglotsbymanagerId/" + id);
   },
   // Gets all parking lots with the given manager id
   // getSpacesByLotId: function(lotId) {
@@ -59,7 +67,7 @@ export default {
   },
 
   //PUT
-  updateSpaceAvailability: function(id, spaceData) {
+  updateSpaceAvailability: function(spaceData, id) {
     return axios.put("/api/parkingspaces/" + id, spaceData)
   }
   
@@ -72,16 +80,9 @@ export default {
 GET
 getManager(id)
 getUser(id)
-getGarage(id)
-getSpot(id)
-getSpots
-getGarages
 
 POST
-addGarage
-addSpot
 addManager
-addUser
 
 PUT
 addSpotToUser

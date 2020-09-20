@@ -1,51 +1,73 @@
 import React, { useState, useEffect } from "react";
-import SpotController from '../components/SpotController';
+//import SpotController from '../components/SpotController';
 import { UserNavBar } from '../components/NavBar';
 import { List, ListItem } from "../components/List";
 import API from "../utils/API";
 import '../style/style.css';
 
 
+function UserHome() {
+  
+  const userId = 1; //TAKE THIS OUT WHEN YOU GET AUTHENTICATION IN!!!
 
-/**************COMPONENTS******************/
-//Parking Space list on left sidebar type thing takes up half of page, each spot can be clicked
-//SpotController on right as main field type thing takes up half of page clicked spot controlled here
-
-
-function UserHome(props) {
   const [spaces, setSpaces] = useState([])
-  let selectedSpace = {
-    id: "",
-    available: true
-  }
+  const [garage, setGarage] = useState()
+  const [currentSpace, setCurrentSpace] = useState()
 
   useEffect(() => {
     loadSpaces()
   }, [])
 
+  useEffect(() => {
+    loadGarage()
+  })
+
   function loadSpaces() {
-    API.getParkingSpacesByUserId()
+    API.getParkingSpacesByUserId(userId)
       .then(res =>
         setSpaces(res.data)
       )
       .catch(err => console.log(err));
   };
 
-  // function getSpaceData(id) {
-  //  This will be where you can load up parking lot data for the selected space  
-  // }
-
-  function selectParkingSpace(selection) {
-    console.log("click!")
-    selectedSpace = selection;
-    //Will pull and display data for selected space's garage
-    //Will set toggle switch to selected space id
-    console.log(selectedSpace)
+  function loadGarage(id) {
+    API.getParkingLotById(id)
+    .then(res => 
+      setGarage(res.data)
+      )
+      .catch(err => console.log(err));
+      console.log(garage)
   }
 
-  function toggleParkingSpace() {
-    console.log("Switch!")
-    //API.updateSpaceAvailability()
+  function selectParkingSpace(selection) {
+    console.log("click! ", selection.id)
+    API.getParkingSpacesById(selection.id)
+    .then(res =>
+      setCurrentSpace(res.data),
+      loadGarage(selection.ParkinglotId)
+    )
+    .catch(err => console.log(err));
+      console.log(currentSpace)
+      
+    //selectedSpace = selection;
+    //Will pull and display data for selected space's garage
+    //Will set toggle switch to selected space id
+  }
+
+  function toggleParkingSpace(isAvail) {
+    console.log(currentSpace.id)
+    API.updateSpaceAvailability({
+          isAvailable: isAvail,
+          where: { id: currentSpace.id }
+      }, currentSpace.id)
+      // .then(
+      //   loadGarage(garage.id)
+      // )
+  }
+
+  function checkAvail() {
+    console.log("availability: " + currentSpace.isAvailable + " current id: " + currentSpace.id);
+    console.log("Current Garage: " + garage.id);
   }
 
   return (
@@ -59,8 +81,8 @@ function UserHome(props) {
         {spaces.length ? (
           <List>
             {spaces.map(space => (
-              <ListItem key={space._id}>
-                <div onClick={() => selectParkingSpace(space.id)}>
+              <ListItem key={space.id}>
+                <div onClick={() => selectParkingSpace(space)}>
                   Parking Space # {space.id}
                 </div>
               </ListItem>
@@ -72,11 +94,22 @@ function UserHome(props) {
       </div>
 
       <div className="container col-sm-5" style={{ float: "right" }}>
-        <h2>Your parking spot</h2>
+        {currentSpace ? (
+          <div className={"container"}>
+          <h2>Your parking spot at {garage.street}</h2>
+          {currentSpace.isAvailable ? (
+            <h2>Is currently Available</h2>
+          ) : (<h2>Is currently Unavailable</h2>)}
           <div>
-            <button onClick={toggleParkingSpace}>Available</button>
-            <button onClick={toggleParkingSpace}>Unavailable</button>
+            <button className={"btn btn-success"} onClick={() => toggleParkingSpace(true)}>Available</button>
+            <button className={"btn btn-danger"} onClick={() => toggleParkingSpace(false)}>Unavailable</button>
+            <button className={"btn btn-warning"} onClick={checkAvail}>Check availability</button>
           </div>
+          </div>
+        ) : (
+          <h3>No Results to Display</h3>
+        )}
+        
       </div>
     </div>
   )

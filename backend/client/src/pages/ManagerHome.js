@@ -6,6 +6,9 @@ import API from '../utils/API';
 import '../style/style.css';
 
 function ManagerHome() {
+
+    const managerId = 1; //TAKE THIS OUT WHEN YOU GET AUTHENTICATION IN!!!
+
     const [garages, setGarages] = useState([])
     const [spaces, setSpaces] = useState([])
     const [currentGarage, setCurrentGarage] = useState()
@@ -18,8 +21,12 @@ function ManagerHome() {
         loadSpaces()
     }, [])
 
+    // useEffect(() => {
+    //     loadCurrentGarage()
+    // })
+
     function loadGarages() {
-        API.getLotByManagerId()
+        API.getLotByManagerId(managerId)
             .then(res =>
                 setGarages(res.data)
             )
@@ -35,12 +42,15 @@ function ManagerHome() {
     };
 
     function selectGarage(selection) {
-        loadSpaces(selection)
         setCurrentGarage(selection)
+        loadSpaces(selection)
         console.log(currentGarage)
     }
 
     function createGarageSpots() {
+        if(!currentGarage){
+            alert("Please select a garage to create spaces.")
+        } else{
         for(let i=0;i<6;i++) {
             API.createParkingSpace({  
             parkingspacenumber: i + 1,
@@ -49,6 +59,7 @@ function ManagerHome() {
             UserId: ""
           })
         }  
+    }
           console.log("API call just ran")
       }
 
@@ -64,7 +75,7 @@ function ManagerHome() {
                 {garages.length ? (
                     <List>
                         {garages.map(garage => (
-                            <ListItem key={garage._id}>
+                            <ListItem key={garage.id}>
                                 <div onClick={() => selectGarage(garage.id)}>
                                     Garage at {garage.street} street
                                 </div>
@@ -80,7 +91,7 @@ function ManagerHome() {
                 {spaces.length ? (
                     <ParkingGarage>
                         {spaces.map(space => (
-                            <ParkingSpace key={space._id}>
+                            <ParkingSpace key={space.id}>
                                 {space.isAvailable}
                             </ParkingSpace>
                         ))}
@@ -88,7 +99,9 @@ function ManagerHome() {
                 ) : (
                         <div>
                             <h3>No Results to Display</h3>
-                            <p>Perhaps you need to generate the parking spaces?</p>
+                            <p>Select a garage from the list</p>
+                            <h4>OR</h4>
+                            <p>Click to generate the parking spaces for selected garage</p>
                             <button className="btn btn-success" 
                             onClick={createGarageSpots}>
                                 Generate Parking Spaces
