@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Input, FormBtn } from '../components/Form';
 import API from '../utils/API';
 import { Link } from "react-router-dom";
@@ -43,25 +43,25 @@ function SignUp() {
             <form className="user-form">
                 <div className="container" style={{ padding: "50px" }}>
                     <h2>Sign Up As A User</h2>
-                    <label for="firstname"><b>First Name</b></label>
+                    <label htmlFor="firstname"><b>First Name</b></label>
                     <Input
                         onChange={handleInputChange}
                         name="firstname"
                         placeholder="First Name"
                     />
-                    <label for="lastname"><b>Last Name</b></label>
+                    <label htmlFor="lastname"><b>Last Name</b></label>
                     <Input
                         onChange={handleInputChange}
                         name="lastname"
                         placeholder="Last Name"
                     /> 
-                    <label for="email"><b>Email Address</b></label>
+                    <label htmlFor="email"><b>Email Address</b></label>
                     <Input
                         onChange={handleInputChange}
                         name="email"
                         placeholder="Email (required)"
                     />
-                    <label for="password"><b>Password</b></label>
+                    <label htmlFor="password"><b>Password</b></label>
                     <Input type="password"
                         onChange={handleInputChange}
                         name="password"
@@ -79,25 +79,25 @@ function SignUp() {
             <form className="user-form">
                 <div className="container" style={{ padding: "50px" }}>
                     <h2>Sign Up As A Manager</h2>
-                    <label for="firstname"><b>First Name</b></label>
+                    <label htmlFor="firstname"><b>First Name</b></label>
                     <Input
                         onChange={handleInputChange}
                         name="firstname"
                         placeholder="First Name"
                     />
-                    <label for="lastname"><b>Last Name</b></label>
+                    <label htmlFor="lastname"><b>Last Name</b></label>
                     <Input
                         onChange={handleInputChange}
                         name="lastname"
                         placeholder="Last Name"
                     /> 
-                    <label for="email"><b>Email Address</b></label>
+                    <label htmlFor="email"><b>Email Address</b></label>
                     <Input
                         onChange={handleInputChange}
                         name="email"
                         placeholder="Email (required)"
                     />
-                    <label for="password"><b>Password</b></label>
+                    <label htmlFor="password"><b>Password</b></label>
                     <Input type="password"
                         onChange={handleInputChange}
                         name="password"

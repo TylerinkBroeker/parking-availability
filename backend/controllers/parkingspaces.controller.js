@@ -68,12 +68,13 @@ exports.findByparkinglotId = (req, res) => {
 
 // PUT route for updating Parkingspaces.
 exports.update = (req, res) => {
-  console.log(req);
+  console.log("--- Request params sent : ", req.params.parkingspaceId);
+  console.log("--- Request body sent : ", req.body.isAvailable);
   Parkingspaces.update({
     isAvailable: req.body.isAvailable
   }, {
     where: {
-      parkingspaceId: req.params.parkingspaceId
+      id: req.params.parkingspaceId
     }
   }).then(Parkingspaces => {
     res.send(Parkingspaces);

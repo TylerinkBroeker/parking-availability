@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Input, FormBtn } from '../components/Form';
 import API from '../utils/API';
 import { ManagerNavBar } from '../components/NavBar';
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 
 function GarageForm() {
@@ -52,26 +52,26 @@ function GarageForm() {
         <ManagerNavBar />
         <form>
             <div className="container" style={{padding: "50px"}}>
-            <label for="street"><b>Street Name</b></label>
+            <label htmlFor="street"><b>Street Name</b></label>
               <Input
                 onChange={handleInputChange}
                 name="street"
                 placeholder="Street Name (required)"
               />
-              <label for="postalcode"><b>Postal Code</b></label>
+              <label htmlFor="postalcode"><b>Postal Code</b></label>
               <Input
                 onChange={handleInputChange}
                 name="postalcode"
                 placeholder="Postal Code (required)"
               />
-              <label for="spaces"><b>Number of Spaces</b></label>
+              <label htmlFor="spaces"><b>Number of Spaces</b></label>
               <Input 
                 onChange={handleInputChange}
                 disabled
                 name="spaces"
                 placeholder="6 (To be implemented)"
               />
-              <label for="ManagerId"><b>Your ID number</b></label>
+              <label htmlFor="ManagerId"><b>Your ID number</b></label>
               <Input
                 onChange={handleInputChange}
                 name="ManagerId"

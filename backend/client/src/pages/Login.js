@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Input, FormBtn } from '../components/Form';
-import API from '../utils/API';
+//import API from '../utils/API';
 import { Link } from "react-router-dom";
 import { ManagerBtn, UserBtn } from '../components/LoginBtn';
 
@@ -42,13 +42,13 @@ function Login() {
                 <div className="container" style={{ padding: "50px" }}>
                     <h2>User Login</h2>
                     <hr />
-                    <label for="email"><b>Email Address</b></label>
+                    <label htmlFor="email"><b>Email Address</b></label>
                     <Input
                         onChange={handleInputChange}
                         name="email"
                         placeholder="Email (required)"
                     />
-                    <label for="password"><b>Password</b></label>
+                    <label htmlFor="password"><b>Password</b></label>
                     <Input type="password"
                         onChange={handleInputChange}
                         name="password"
@@ -67,13 +67,13 @@ function Login() {
                 <div className="container" style={{ padding: "50px" }}>
                     <h2>Manager Login</h2>
                     <hr />
-                    <label for="email"><b>Email Address</b></label>
+                    <label htmlFor="email"><b>Email Address</b></label>
                     <Input
                         onChange={handleInputChange}
                         name="email"
                         placeholder="Email (required)"
                     />
-                    <label for="password"><b>Password</b></label>
+                    <label htmlFor="password"><b>Password</b></label>
                     <Input type="password"
                         onChange={handleInputChange}
                         name="password"
