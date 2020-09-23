@@ -56,6 +56,7 @@ function UserHome() {
 
   function toggleParkingSpace(isAvail) {
     console.log(currentSpace.id)
+    window.location.reload(false);
     API.updateSpaceAvailability({
           isAvailable: isAvail,
           where: { id: currentSpace.id }
@@ -96,14 +97,14 @@ function UserHome() {
       <div className="container col-sm-5" style={{ float: "right" }}>
         {currentSpace ? (
           <div className={"container"}>
-          <h2>Your parking spot at {garage.street}</h2>
+          <h2>Your parking spot</h2>
           {currentSpace.isAvailable ? (
             <h2>Is currently Available</h2>
           ) : (<h2>Is currently Unavailable</h2>)}
           <div>
             <button className={"btn btn-success"} onClick={() => toggleParkingSpace(true)}>Available</button>
             <button className={"btn btn-danger"} onClick={() => toggleParkingSpace(false)}>Unavailable</button>
-            <button className={"btn btn-warning"} onClick={checkAvail}>Check availability</button>
+            {/* <button className={"btn btn-warning"} onClick={checkAvail}>Check availability</button> */}
           </div>
           </div>
         ) : (
