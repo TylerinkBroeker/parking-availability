@@ -7,3 +7,19 @@ li {
 li:hover {
     background-color: #ccc;
   }
+
+.pk-space {
+  color: white;
+  height: fit-content;
+  width: fit-content;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.pk-space:hover {
+  opacity: 70%;
+}
+
+.active {
+  background-color: lightgrey;
+}

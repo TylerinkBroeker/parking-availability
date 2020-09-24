@@ -43,6 +43,9 @@ export default {
   getLotByManagerId: function(id) {
     return axios.get("/api/parkinglotsbymanagerId/" + id);
   },
+  getAllUsers: function() {
+    return axios.get("/api/users");
+  },
   // Gets all parking lots with the given manager id
   // getSpacesByLotId: function(lotId) {
   //   return axios.get("/api/parkingspacebylotId/" + lotId);
