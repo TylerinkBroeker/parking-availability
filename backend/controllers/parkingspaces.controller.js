@@ -71,7 +71,8 @@ exports.update = (req, res) => {
   console.log("--- Request params sent : ", req.params.parkingspaceId);
   console.log("--- Request body sent : ", req.body.isAvailable);
   Parkingspaces.update({
-    isAvailable: req.body.isAvailable
+    isAvailable: req.body.isAvailable,
+    UserId: req.body.UserId
   }, {
     where: {
       id: req.params.parkingspaceId

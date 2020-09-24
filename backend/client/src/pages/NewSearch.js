@@ -108,7 +108,22 @@ function NewSearch() {
                     <ParkingGarage>
                         {spaces.map(space => (
                             <ParkingSpace key={space.id}>
-                                {space.isAvailable}
+                                {space.isAvailable ? (
+                                <span 
+                                    className="card pk-space bg-success"
+                                    
+                                >
+                                    Parking Space Number {space.parkingspacenumber}
+                                </span>
+                                ) : (
+                                <span 
+                                    className="card pk-space bg-danger"
+                                    
+                                    >
+                                    Parking Space Number {space.parkingspacenumber}
+                                </span>
+                                )}
+                                
                             </ParkingSpace>
                         ))}
                     </ParkingGarage>

@@ -9,16 +9,33 @@ export function ParkingGarage({ children }) {
 }
 
 export function ParkingSpace({ children }) {
-        if(children === true) {
-            return (
-                <div style={{background: "green", margin: "2px"}} className="card col-sm-2">
-                    Parking space number
-                </div>);
-        } else {
-            return (
-                <div style={{background: "red", margin: "2px"}} className="card col-sm-2">
-                    Parking space number
-                </div>);
-        }
+
+  return (
+    <div className="col-sm-2">
+      {children}
+    </div>
+  )
 }
 
+export function ParkingSpaceGraphic({ children }) {
+
+  return (
+    <card>
+      
+    </card>
+  )
+}
+
+
+
+// if(children === true) {
+//   return (
+//       <div style={{background: "green", margin: "2px"}} className="card col-sm-2">
+//           Parking space number
+//       </div>);
+// } else {
+//   return (
+//       <div style={{background: "red", margin: "2px"}} className="card col-sm-2">
+//           Parking space number
+//       </div>);
+// }
